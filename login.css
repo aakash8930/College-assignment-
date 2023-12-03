@@ -19,6 +19,11 @@
   --accent-color: #fff;
 }
 
+h2{
+    font-family: 'carter one';
+
+}
+
 section {
   position: relative;
   display: flex;
