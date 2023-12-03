@@ -83,24 +83,24 @@ body {
 
 
 .login-btn .btnlogin-popup{
-    width: 150px;
-    height: 45px;
+   font-size: 1rem;
     color: white;
-    font-size: 1.1em;
-    margin-left: 40px;
-    left: 0;
-    background: transparent;
-    border: 2px solid #faf7f7;
-    outline: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.5s;
+    font-family: 'Raleway', sans-serif;
+
+    padding: 15px 25px;
+    background: var(--color-bg2);
+    background-image: linear-gradient(to right, #ED4264, #FFEDBC);
+    background-size: 0;
+    background-repeat: no-repeat;
+    border-image: linear-gradient(to right, #ED4264, #FFEDBC);
+    border-image-slice: 1;
+    border-image-width: 3px;
+
+    transition: all 0.5s ease;
 }
 
 .login-btn .btnlogin-popup:hover{
-   background: var(--color-bg2);
-    color: var(--color-white);
-    transition: all 0.5s ease;
+   backgroun-size: 100%;
 }
 
 
