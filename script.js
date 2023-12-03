@@ -1,86 +1,53 @@
-// change navbar on scroll
-
-window.addEventListener('scroll', () => {
-    document.querySelector('nav').classList.toggle('window-scroll', window.scrollY > 0)
-})
-
-
-// Show/hide faq questions 
-
-const faqs = document.querySelectorAll('.faq');
-
-faqs.forEach(faq => {
-    faq.addEventListener('click', () => {
-        faq.classList.toggle('open');
-
-        //change icon
-        const icon = faq.querySelector('.faq__icon i');
-        if(icon.className === 'fa-solid fa-plus'){
-            icon.className =  'fa-solid fa-minus';   
-        }else{
-            icon.className = 'fa-solid fa-plus';
-        }
-    })
-});
+const nxtBtn = document.querySelector(".next-btn");
+const prvBtn = document.querySelector(".prev-btn");
+const slides = document.querySelectorAll(".slide");
+const numberOfSlides = slides.length;
+let slideNumber= 0;
 
 
-//show/hide navbar
+// slider next button
+nxtBtn.onclick = () =>{
+    slides.forEach((slide) => {
+        slide.classList.remove('active');
+    });
 
-const menu = document.querySelector(".nav_menu");
-const menuBtn = document.querySelector("#open-menu-btn");
-const closeBtn = document.querySelector("#close-menu-btn");
+    slideNumber++;
 
-menuBtn.addEventListener('click', () => {
-    menu.style.display = "flex";
-    closeBtn.style.display = "inline-block";
-    menuBtn.style.display = "none";
-})
-
-// close navbar
-
-const closeNav = () =>{
-    menu.style.display = "none";
-    closeBtn.style.display = "none";
-    menuBtn.style.display = "inline-block";
-}
-
-closeBtn.addEventListener('click', closeNav)
-
-
-// testimonials slider
-let currentTestimonial = 1;
-const intervalTime = 3000; // Set the time interval in milliseconds (e.g., 5000 for 5 seconds)
-
-function showTestimonial(index) {
-    const testimonials = document.querySelectorAll('.testimonial');
-    if (index < 1) {
-        currentTestimonial = testimonials.length;
-    } else if (index > testimonials.length) {
-        currentTestimonial = 1;
-    } else {
-        currentTestimonial = index;
+    if(slideNumber > (numberOfSlides-1)){
+        slideNumber = 0;
     }
 
-    testimonials.forEach(testimonial => testimonial.style.display = 'none');
-    testimonials[currentTestimonial - 1].style.display = 'block';
+    slides[slideNumber].classList.add('active');
 }
 
-function prevTestimonial() {
-    showTestimonial(currentTestimonial - 1);
+
+// slider Prev button
+prvBtn.onclick = () =>{
+    slides.forEach((slide) => {
+        slide.classList.remove('active');
+    });
+
+    slideNumber--;
+
+    if(slideNumber < 0 ){
+        slideNumber = numberOfSlides - 1;
+    }
+
+    slides[slideNumber].classList.add('active');
 }
 
-function nextTestimonial() {
-    showTestimonial(currentTestimonial + 1);
-}
-
-function autoSlide() {
-    nextTestimonial();
-}
-
-// Show the first testimonial on page load
-showTestimonial(currentTestimonial);
-
-// Set up the interval for automatic sliding
-setInterval(autoSlide, intervalTime);
 
 
+
+// Add this in your script.js file
+const menuIcon = document.querySelector(".menu-icon");
+const navbarList = document.querySelector(".navbar ul");
+
+menuIcon.addEventListener("click", () => {
+    navbarList.classList.toggle("active");
+});
+body.addEventListener("click", (event) => {
+    if (!navbarList.contains(event.target) && !menuIcon.contains(event.target)) {
+        navbarList.classList.remove("active");
+    }
+});
