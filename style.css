@@ -157,14 +157,9 @@ body {
 }
 
 .navbar ul li a:hover {
-    padding: 5px 5px 5px 5px;
     background: var(--color-bg2);
     color: var(--color-white);
-    border-image: linear-gradient(to right, #ED4264, #FFEDBC);
-    border-image-slice: 1;
-    border-image-outset: 5px;
-    border-image-width: 3px;
-    transition: all 0.5s ease;
+    
 }
 
 
